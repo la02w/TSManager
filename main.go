@@ -25,7 +25,10 @@ func main() {
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
-		OnStartup: app.startup,
+		Frameless:       true,
+		CSSDragProperty: "widows",
+		CSSDragValue:    "1",
+		OnStartup:       app.startup,
 		Bind: []interface{}{
 			app,
 		},
