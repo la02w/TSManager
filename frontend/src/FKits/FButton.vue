@@ -23,6 +23,5 @@ button::before {
   @apply content-[''] absolute rounded-lg inset-0 bg-[var(--btn-regular-bg)]
     hover:bg-[var(--btn-regular-bg-hover)] hover:scale-[1.1]
     active:bg-[var(--btn-regular-bg-active)] active:scale-95
-    transition-all duration-300 ease-in-out transform;
 }
 </style>

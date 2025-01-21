@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-[var(--page-bg)];
-}
-
 :root {
   --color-selection-bar: linear-gradient(
     to right,

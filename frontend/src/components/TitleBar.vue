@@ -60,7 +60,9 @@ import ColorPickerSlider from '@/FKits/ColorPickerSlider.vue' // 引入 ColorPic
 import { Quit, WindowMinimise } from '../../wailsjs/runtime/runtime'
 const toggleColorPicker = () => {
   const colorpicker = document.getElementById('ColorPickerSlider')
-  colorpicker?.classList.toggle('hidden')
+  if (colorpicker) {
+    colorpicker.classList.toggle('hidden')
+  }
 }
 const toggleLightDarkMode = () => {
   document.documentElement.classList.toggle('dark')

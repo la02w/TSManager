@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-80 p-4 bg-[var(--card-bg)] dark:shadow-lg rounded-2xl text-gray-600"
+    class="w-80 p-4 bg-[var(--card-bg)] shadow-lg rounded-2xl text-gray-600"
   >
     <div class="flex items-center justify-between">
       <div class="font-bold mb-2 flex items-center">
