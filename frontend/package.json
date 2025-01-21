@@ -6,15 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check": "npx @biomejs/biome check --write ."
   },
   "dependencies": {
     "vue": "^3.2.37"
   },
   "devDependencies": {
     "@babel/types": "^7.18.10",
+    "@biomejs/biome": "1.9.4",
     "@iconify/json": "^2.2.298",
     "@iconify/tailwind": "^1.2.0",
+    "@types/node": "^22.10.7",
     "@vitejs/plugin-vue": "^3.0.3",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1",
