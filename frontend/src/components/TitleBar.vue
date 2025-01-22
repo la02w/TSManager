@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-between mx-auto bg-[var(--card-bg)] relative dark:text-white/75 select-none">
-    <div class="px-4 w-full" style="widows: 1">WailsApp</div>
+    <div class="px-4 w-full" style="widows: 1">TeamspeakManager</div>
     <div class="flex space-x-2">
       <div>
         <button @click="toggleColorPicker"
@@ -26,7 +26,7 @@
         </button>
       </div>
     </div>
-    <ColorPickerSlider id="ColorPickerSlider" class="hidden absolute top-8 right-5" />
+    <ColorPickerSlider id="ColorPickerSlider" class="hidden absolute top-8 right-5 z-[99]" />
   </div>
 </template>
 <script setup lang="ts">

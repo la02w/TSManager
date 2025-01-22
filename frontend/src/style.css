@@ -27,6 +27,8 @@
   --btn-regular-bg: oklch(0.95 0.025 var(--hue));
   --btn-regular-bg-hover: oklch(0.9 0.05 var(--hue));
   --btn-regular-bg-active: oklch(0.85 0.08 var(--hue));
+  --inline-code-bg: var(--btn-regular-bg);
+  --inline-code-color: var(--btn-content);
 }
 :root.dark {
   --primary: oklch(0.75 0.14 var(--hue));
@@ -36,6 +38,8 @@
   --btn-regular-bg: oklch(0.33 0.035 var(--hue));
   --btn-regular-bg-hover: oklch(0.38 0.04 var(--hue));
   --btn-regular-bg-active: oklch(0.43 0.045 var(--hue));
+  --inline-code-bg: var(--btn-regular-bg);
+  --inline-code-color: var(--btn-content);
 }
 
 @layer base {
@@ -47,5 +51,8 @@
     @apply rounded-full bg-[var(--primary)];
     border: 6px solid transparent;
     background-clip: padding-box;
+  }
+  p code {
+    @apply overflow-hidden rounded-[.375rem] px-[.25rem] py-[.125rem] bg-[var(--inline-code-bg)] text-[var(--inline-code-color)];
   }
 }

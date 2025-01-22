@@ -1,27 +1,24 @@
 <template>
   <div class="flex items-center gap-5">
-    <p class="text-lg font-semibold text-gray-800">选择服务器</p>
+    <p class="text-lg font-semibold text-[var(--primary)]">选择服务器</p>
     <div class="items-center space-x-4">
       <select v-model="selectedServer"
-        class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        class="flex-1 p-2 rounded-md focus:outline-none text-[var(--btn-content)] bg-[var(--btn-regular-bg)]">
         <option v-for="server in servers" :key="server.name" :value="server">
           {{ server.name }} - {{ server.url }}
         </option>
       </select>
-      <button
-        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-        添加
-      </button>
-      <button @click="reload"
-        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-        刷新
-      </button>
     </div>
+    <div class="flex gap-2">
+        <FButton content="添加" />
+        <FButton content="刷新" @click="reload" />
+      </div>
   </div>
-
+  <hr class="my-3" />
 </template>
 
 <script setup lang="ts">
+import FButton from '@/FKits/FButton.vue'
 import { onMounted, ref, watch } from 'vue'
 import { GetServerList } from '../../wailsjs/go/main/App'
 import type { utils } from '../../wailsjs/go/models'
