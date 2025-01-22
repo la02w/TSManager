@@ -1,6 +1,9 @@
 package main
 
-import "context"
+import (
+	"WailsApp/utils"
+	"context"
+)
 
 // App struct
 type App struct {
@@ -16,4 +19,8 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+}
+
+func (a *App) GetServerList(filepath string) []utils.Server {
+	return utils.GetServerList(filepath)
 }
