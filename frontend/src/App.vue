@@ -1,18 +1,18 @@
 <template>
   <div class="flex flex-col h-screen">
-    <TitleBar class="w-full" />
+    <TitleBar v-model="lang" class="w-full" />
     <div class="flex-1 overflow-auto myscrollbar p-5 bg-[var(--page-bg)]" @click="hiddenColorPicker">
       <div class="bg-white w-full  p-4 rounded-lg items-center text-[var(--primary)] dark:bg-[var(--card-bg)]">
         <div>
-          <ServerList v-model="selectedServer" />
+          <ServerList v-model="selectedServer" :title="i18n(i18nKey.selectServer,lang)" />
         </div>
         <div class="flex gap-2">
           <div class="w-1/2">
-            <div>查询命令：
+            <div>{{i18n(i18nKey.queryCommand,lang)}}：
               <div class="flex gap-2">
-                <input v-model="command" type="text" placeholder="请输入指令" list="suggestions" @keydown="handleKeyDown"
+                <input v-model="command" type="text" :placeholder="i18n(i18nKey.enterCommand,lang)" list="suggestions" @keydown="handleKeyDown"
                   class="focus:outline-none px-2 py-1 rounded-lg text-[var(--btn-content)] bg-[var(--btn-regular-bg)]">
-                  <FButton content="查询" @click="getServerinfo" class="my-1" />
+                  <FButton :content="i18n(i18nKey.query,lang)" @click="getServerinfo" class="my-1" />
               </div>
               <datalist v-if="command" id="suggestions">
                 <option value="apikeyadd"></option>
@@ -155,7 +155,7 @@
                 <option value="whoami"></option>
               </datalist>
               <div>
-              <JSONEdit v-model="jsonStr" />
+              <JSONEdit v-model="jsonStr" :lang="lang" />
             </div>
             </div>
             <div v-if="Response">
@@ -166,29 +166,36 @@
 </pre>
             </div>
           </div>
-          <div v-html="tutorial" class="w-1/2 overflow-auto myscrollbar"></div>
+          <div class="w-1/2 overflow-auto myscrollbar">
+            <span v-if="!tutorial">{{ i18n(i18nKey.commandNotFound,lang) }}</span>
+            <div v-html="tutorial"></div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
-
 </template>
 
 <script setup lang="ts">
-import ServerList from '@/components/ServerList.vue'
-import TitleBar from '@/components/TitleBar.vue'
-import getHTML from '@/utils/Tutorial'
 import { ref, watch } from 'vue'
 import { GetServerData } from '../wailsjs/go/main/App'
 import type { ts3_webquery, utils } from '../wailsjs/go/models'
 import FButton from './FKits/FButton.vue'
 import JSONEdit from './FKits/JSONEdit.vue'
+import ServerList from './components/ServerList.vue'
+import TitleBar from './components/TitleBar.vue'
+import i18nKey from './i18n/i18nKey'
+import { i18n } from './i18n/translation'
+import getHTML from './utils/Tutorial'
+import { getLang } from './utils/getLang'
 
+const lang = ref<string>(getLang())
 const selectedServer = ref<utils.Server | null>(null)
 const Response = ref<ts3_webquery.Response | null>(null)
 const command = ref<string>('')
 const jsonStr = ref<string>('')
-const tutorial = ref<string>('Command not found.')
+const tutorial = ref<string>('')
 watch(command, (newVal) => {
   tutorial.value = getHTML(newVal)
 })

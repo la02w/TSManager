@@ -94,7 +94,7 @@ For detailed information, see Virtual Server Properties.
 export default function getHTML(command: string) {
   const commandObj = commands.find((cmd) => cmd.name === command)
   if (!commandObj) {
-    return 'Command not found.'
+    return ''
   }
   return commandObj.toHTML()
 }
