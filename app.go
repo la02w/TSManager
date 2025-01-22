@@ -1,7 +1,7 @@
 package main
 
 import (
-	"WailsApp/utils"
+	"TSManager/utils"
 	"context"
 	"encoding/json"
 

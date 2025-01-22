@@ -1,4 +1,4 @@
-module WailsApp
+module TSManager
 
 go 1.23.2
 
